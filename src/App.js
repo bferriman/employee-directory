@@ -1,6 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Table from "./components/Table";
+
+const moment = require("moment");
+
+class App extends React.Component {
+
+  state = {
+    employees: []
+  };
+
+  componentDidMount() {
+    this.setState({ employees: employees });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Table employees={employees} />
+      </div>
+    );
+  }
+}
+
+export default App;
 
 const employees = [
   {
@@ -11,7 +34,7 @@ const employees = [
     email: "emarsh@company.com",
     phone: "303-555-0163",
     dept: "Engineering",
-    hire: new Date(2017, 2, 27)
+    hire: moment("2017-03-27")
   },
   {
     name: {
@@ -21,7 +44,7 @@ const employees = [
     email: "lnguyen@company.com",
     phone: "303-555-0129",
     dept: "Marketing",
-    hire: new Date(2015, 10, 2)
+    hire: moment("2015-11-02")
   },
   {
     name: {
@@ -31,7 +54,7 @@ const employees = [
     email: "ladams@company.com",
     phone: "303-555-0130",
     dept: "Marketing",
-    hire: new Date(1999, 7, 3)
+    hire: moment("1999-08-03")
   },
   {
     name: {
@@ -41,7 +64,7 @@ const employees = [
     email: "kcarlson@company.com",
     phone: "303-555-0176",
     dept: "Corporate",
-    hire: new Date(2008, 11, 22)
+    hire: moment("2008-12-22")
   },
   {
     name: {
@@ -51,7 +74,7 @@ const employees = [
     email: "mmcdonal@company.com",
     phone: "303-555-0180",
     dept: "Sales",
-    hire: new Date(2019, 9, 15)
+    hire: moment("2019-10-15")
   },
   {
     name: {
@@ -61,7 +84,7 @@ const employees = [
     email: "elyons@company.com",
     phone: "303-555-0185",
     dept: "Accounting",
-    hire: new Date(2020, 0, 30)
+    hire: moment("2020-01-30")
   },
   {
     name: {
@@ -71,7 +94,7 @@ const employees = [
     email: "olawrenc@company.com",
     phone: "303-555-0156",
     dept: "Engineering",
-    hire: new Date(2011, 4, 29)
+    hire: moment("2011-05-29")
   },
   {
     name: {
@@ -81,7 +104,7 @@ const employees = [
     email: "jlucas@company.com",
     phone: "303-555-0124",
     dept: "Sales",
-    hire: new Date(2013, 8, 8)
+    hire: moment("2013-09-08")
   },
   {
     name: {
@@ -91,7 +114,7 @@ const employees = [
     email: "efrancis@company.com",
     phone: "303-555-0121",
     dept: "Sales",
-    hire: new Date(2017, 6, 12)
+    hire: moment("2017-07-12")
   },
   {
     name: {
@@ -101,7 +124,7 @@ const employees = [
     email: "mstrickl@company.com",
     phone: "303-555-0137",
     dept: "Accounting",
-    hire: new Date(2015, 1, 11)
+    hire: moment("2015-02-11")
   },
   {
     name: {
@@ -111,7 +134,7 @@ const employees = [
     email: "bpark@company.com",
     phone: "303-555-0133",
     dept: "Engineering",
-    hire: new Date(1996, 10, 8)
+    hire: moment("1996-11-08")
   },
   {
     name: {
@@ -121,7 +144,7 @@ const employees = [
     email: "abush@company.com",
     phone: "303-555-0110",
     dept: "Marketing",
-    hire: new Date(2004, 1, 15)
+    hire: moment("2004-02-15")
   },
   {
     name: {
@@ -131,7 +154,7 @@ const employees = [
     email: "ahiggins@company.com",
     phone: "303-555-0148",
     dept: "Engineering",
-    hire: new Date(2012, 3, 13)
+    hire: moment("2012-04-13")
   },
   {
     name: {
@@ -141,7 +164,7 @@ const employees = [
     email: "sburns@company.com",
     phone: "303-555-0118",
     dept: "Marketing",
-    hire: new Date(2016, 5, 5)
+    hire: moment("2016-06-05")
   },
   {
     name: {
@@ -151,7 +174,7 @@ const employees = [
     email: "ehoward@company.com",
     phone: "303-555-0114",
     dept: "Sales",
-    hire: new Date(2018, 11, 7)
+    hire: moment("2018-12-07")
   },
   {
     name: {
@@ -161,7 +184,7 @@ const employees = [
     email: "apage@company.com",
     phone: "303-555-0198",
     dept: "Engineering",
-    hire: new Date(2001, 0, 21)
+    hire: moment("2001-01-21")
   },
   {
     name: {
@@ -171,7 +194,7 @@ const employees = [
     email: "mholmes@company.com",
     phone: "303-555-0195",
     dept: "Engineering",
-    hire: new Date(2009, 9, 19)
+    hire: moment("2009-10-19")
   },
   {
     name: {
@@ -181,7 +204,7 @@ const employees = [
     email: "dsanchez@company.com",
     phone: "303-555-0151",
     dept: "Corporate",
-    hire: new Date(2016, 10, 29)
+    hire: moment("2016-11-19")
   },
   {
     name: {
@@ -191,7 +214,7 @@ const employees = [
     email: "schriste@company.com",
     phone: "303-555-0162",
     dept: "Engineering",
-    hire: new Date(2018, 9, 31)
+    hire: moment("2018-10-31")
   },
   {
     name: {
@@ -201,7 +224,7 @@ const employees = [
     email: "cjordan@company.com",
     phone: "303-555-0138",
     dept: "Legal",
-    hire: new Date(2007, 4, 6)
+    hire: moment("2007-05-06")
   },
   {
     name: {
@@ -211,7 +234,7 @@ const employees = [
     email: "eunderwo@company.com",
     phone: "303-555-0122",
     dept: "Accounting",
-    hire: new Date(2019, 11, 29)
+    hire: moment("2019-12-29")
   },
   {
     name: {
@@ -221,7 +244,7 @@ const employees = [
     email: "rnichols@company.com",
     phone: "303-555-0188",
     dept: "Engineering",
-    hire: new Date(1994, 2, 15)
+    hire: moment("1994-03-15")
   },
   {
     name: {
@@ -231,7 +254,7 @@ const employees = [
     email: "mdunn@company.com",
     phone: "303-555-0164",
     dept: "Legal",
-    hire: new Date(2002, 7, 18)
+    hire: moment("2002-08-18")
   },
   {
     name: {
@@ -241,7 +264,7 @@ const employees = [
     email: "jdouglas@company.com",
     phone: "303-555-0119",
     dept: "Sales",
-    hire: new Date(2014, 5, 29)
+    hire: moment("2014-06-29")
   },
   {
     name: {
@@ -251,29 +274,6 @@ const employees = [
     email: "pwong@company.com",
     phone: "303-555-0109",
     dept: "Sales",
-    hire: new Date(2016, 8, 6)
+    hire: moment("2016-09-06")
   }
 ]
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
