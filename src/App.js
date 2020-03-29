@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Search from "./components/Search";
 import Table from "./components/Table";
 
 const moment = require("moment");
@@ -8,11 +9,37 @@ class App extends React.Component {
 
   state = {
     employees: [],
-    sortedBy: ""
+    sortedBy: "",
+    filtered: false
   };
 
   componentDidMount() {
     this.setState({ employees: employees });
+  }
+
+  searchByTerm = (term) => {
+    let emps = this.state.employees;
+    let matches = emps.filter( emp => {
+      return ( 
+        emp.name.last.indexOf(term) !== -1 ||
+        emp.name.first.indexOf(term) !== -1 ||
+        emp.email.indexOf(term) !== -1 ||
+        emp.phone.indexOf(term) !== -1 ||
+        emp.dept.indexOf(term) !== -1 ||
+        emp.hire.format("MMM D YYYY").indexOf(term) !== -1
+      );
+    });
+    this.setState({
+      employees: matches,
+      filtered: true
+    });
+  };
+
+  clearFilter = () => {
+    this.setState({ 
+      employees: employees,
+      filtered: false
+    });
   }
 
   sortByName = () => {
@@ -94,6 +121,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Search filtered={this.state.filtered} clearFilter={this.clearFilter} searchByTerm={this.searchByTerm} />
         <Table
           employees={this.state.employees}
           sortByName={this.sortByName}
