@@ -10,7 +10,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(express.static("public"));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile("./public/index.html");
 });
 
 app.listen(port);
