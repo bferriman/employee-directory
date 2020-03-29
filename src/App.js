@@ -7,17 +7,99 @@ const moment = require("moment");
 class App extends React.Component {
 
   state = {
-    employees: []
+    employees: [],
+    sortedBy: ""
   };
 
   componentDidMount() {
     this.setState({ employees: employees });
   }
 
+  sortByName = () => {
+
+    if(this.state.sortedBy === "name") { //reverse sort
+      this.setState({
+        employees: this.state.employees.reverse()
+      });
+    }
+    else { //sort by name
+      const sorted = this.state.employees.sort( (a, b) => {
+        let x = a.name.last.toLowerCase();
+        let y = b.name.last.toLowerCase();
+        if(x < y) {
+          return -1;
+        }
+        if(x > y) {
+          return 1;
+        }
+        return 0;
+      });
+      this.setState({
+        employees: sorted,
+        sortedBy: "name"
+      });
+    }
+  };
+
+  sortByDept = () => {
+
+    if(this.state.sortedBy === "dept") { //reverse sort
+      this.setState({
+        employees: this.state.employees.reverse()
+      });
+    }
+    else { //sort by department
+      const sorted = this.state.employees.sort( (a, b) => {
+        let x = a.dept.toLowerCase();
+        let y = b.dept.toLowerCase();
+        if(x < y) {
+          return -1;
+        }
+        if(x > y) {
+          return 1;
+        }
+        return 0;
+      });
+      this.setState({
+        employees: sorted,
+        sortedBy: "dept"
+      });
+    }
+  };
+
+  sortByHire = () => {
+    
+    if(this.state.sortedBy === "hire") { //reverse sort
+      this.setState({
+        employees: this.state.employees.reverse()
+      });
+    }
+    else { //sort by department
+      const sorted = this.state.employees.sort( (a, b) => {
+        if(a.hire < b.hire) {
+          return -1;
+        }
+        if(a.hire > b.hire) {
+          return 1;
+        }
+        return 0;
+      });
+      this.setState({
+        employees: sorted,
+        sortedBy: "hire"
+      });
+    }
+  };
+
   render() {
     return (
       <div className="App">
-        <Table employees={employees} />
+        <Table
+          employees={this.state.employees}
+          sortByName={this.sortByName}
+          sortByDept={this.sortByDept}
+          sortByHire={this.sortByHire}
+        />
       </div>
     );
   }
@@ -27,6 +109,7 @@ export default App;
 
 const employees = [
   {
+    id: "355",
     name: {
       first: "Evan",
       last: "Marsh"
@@ -37,6 +120,7 @@ const employees = [
     hire: moment("2017-03-27")
   },
   {
+    id: "155",
     name: {
       first: "Lester",
       last: "Nguyen"
@@ -47,6 +131,7 @@ const employees = [
     hire: moment("2015-11-02")
   },
   {
+    id: "654",
     name: {
       first: "Lloyd",
       last: "Adams"
@@ -57,6 +142,7 @@ const employees = [
     hire: moment("1999-08-03")
   },
   {
+    id: "896",
     name: {
       first: "Krista",
       last: "Carlson"
@@ -67,6 +153,7 @@ const employees = [
     hire: moment("2008-12-22")
   },
   {
+    id: "803",
     name: {
       first: "Marcella",
       last: "McDonald"
@@ -77,6 +164,7 @@ const employees = [
     hire: moment("2019-10-15")
   },
   {
+    id: "933",
     name: {
       first: "Everett",
       last: "Lyons"
@@ -87,6 +175,7 @@ const employees = [
     hire: moment("2020-01-30")
   },
   {
+    id: "267",
     name: {
       first: "Orville",
       last: "Lawrence"
@@ -97,6 +186,7 @@ const employees = [
     hire: moment("2011-05-29")
   },
   {
+    id: "549",
     name: {
       first: "Jaime",
       last: "Lucas"
@@ -107,6 +197,7 @@ const employees = [
     hire: moment("2013-09-08")
   },
   {
+    id: "210",
     name: {
       first: "Elena",
       last: "Francis"
@@ -117,6 +208,7 @@ const employees = [
     hire: moment("2017-07-12")
   },
   {
+    id: "571",
     name: {
       first: "Mattie",
       last: "Strickland"
@@ -127,6 +219,7 @@ const employees = [
     hire: moment("2015-02-11")
   },
   {
+    id: "965",
     name: {
       first: "Bruce",
       last: "Park"
@@ -137,6 +230,7 @@ const employees = [
     hire: moment("1996-11-08")
   },
   {
+    id: "505",
     name: {
       first: "Andrea",
       last: "Bush"
@@ -147,6 +241,7 @@ const employees = [
     hire: moment("2004-02-15")
   },
   {
+    id: "159",
     name: {
       first: "Andres",
       last: "Higgins"
@@ -157,6 +252,7 @@ const employees = [
     hire: moment("2012-04-13")
   },
   {
+    id: "194",
     name: {
       first: "Sonya",
       last: "Burns"
@@ -167,6 +263,7 @@ const employees = [
     hire: moment("2016-06-05")
   },
   {
+    id: "450",
     name: {
       first: "Erika",
       last: "Howard"
@@ -177,6 +274,7 @@ const employees = [
     hire: moment("2018-12-07")
   },
   {
+    id: "525",
     name: {
       first: "Arlene",
       last: "Page"
@@ -187,6 +285,7 @@ const employees = [
     hire: moment("2001-01-21")
   },
   {
+    id: "826",
     name: {
       first: "Melvin",
       last: "Holmes"
@@ -197,6 +296,7 @@ const employees = [
     hire: moment("2009-10-19")
   },
   {
+    id: "359",
     name: {
       first: "Devin",
       last: "Sanchez"
@@ -207,6 +307,7 @@ const employees = [
     hire: moment("2016-11-19")
   },
   {
+    id: "254",
     name: {
       first: "Stanley",
       last: "Christensen"
@@ -217,6 +318,7 @@ const employees = [
     hire: moment("2018-10-31")
   },
   {
+    id: "054",
     name: {
       first: "Crystal",
       last: "Jordan"
@@ -227,6 +329,7 @@ const employees = [
     hire: moment("2007-05-06")
   },
   {
+    id: "025",
     name: {
       first: "Ervin",
       last: "Underwood"
@@ -237,6 +340,7 @@ const employees = [
     hire: moment("2019-12-29")
   },
   {
+    id: "387",
     name: {
       first: "Rufus",
       last: "Nichols"
@@ -247,6 +351,7 @@ const employees = [
     hire: moment("1994-03-15")
   },
   {
+    id: "878",
     name: {
       first: "Moses",
       last: "Dunn"
@@ -257,6 +362,7 @@ const employees = [
     hire: moment("2002-08-18")
   },
   {
+    id: "729",
     name: {
       first: "Jodi",
       last: "Douglas"
@@ -267,6 +373,7 @@ const employees = [
     hire: moment("2014-06-29")
   },
   {
+    id: "492",
     name: {
       first: "Paul",
       last: "Wong"
