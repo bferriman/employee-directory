@@ -26,15 +26,9 @@ function Search(props) {
     event.preventDefault();
   };
 
-  // const filterButton = () => {
-  //   if(props.filtered === true) {
-  //     return <button className="btn btn-warning" onClick={props.clearFilter}>Clear Filter</button>
-  //   }
-  // }
-
   return (
     <div className="container">
-      <h1 className="text-center">Search For Anything on Wikipedia</h1>
+      <h1 className="text-center">Employee Directory</h1>
       <SearchForm
         handleFormSubmit={handleFormSubmit}
         handleInputChange={handleInputChange}
