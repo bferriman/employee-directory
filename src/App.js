@@ -124,13 +124,15 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Search filtered={(this.state.filter === "") ? false : true} clearFilter={this.clearFilter} setFilter={this.setFilter} />
-        <Table
-          employees={empsToRender}
-          sortByName={this.sortByName}
-          sortByDept={this.sortByDept}
-          sortByHire={this.sortByHire}
-        />
+        <div className="container">
+          <Search filtered={(this.state.filter === "") ? false : true} clearFilter={this.clearFilter} setFilter={this.setFilter} />
+          <Table
+            employees={empsToRender}
+            sortByName={this.sortByName}
+            sortByDept={this.sortByDept}
+            sortByHire={this.sortByHire}
+          />
+        </div>
       </div>
     );
   }

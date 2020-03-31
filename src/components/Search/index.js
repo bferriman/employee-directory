@@ -27,14 +27,16 @@ function Search(props) {
   };
 
   return (
-    <div className="container">
-      <h1 className="text-center">Employee Directory</h1>
-      <SearchForm
-        handleFormSubmit={handleFormSubmit}
-        handleInputChange={handleInputChange}
-        search={search}
-      />
-      <ClearFilterBtn clearFilter={props.clearFilter} filtered={props.filtered} />
+    <div className="row">
+      <div className="col">
+        <h1 className="text-center">Employee Directory</h1>
+        <SearchForm
+          handleFormSubmit={handleFormSubmit}
+          handleInputChange={handleInputChange}
+          search={search}
+        />
+        <ClearFilterBtn clearFilter={props.clearFilter} filtered={props.filtered} />
+      </div>
     </div>
   );
 }
