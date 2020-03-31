@@ -18,15 +18,16 @@ class App extends React.Component {
   }
 
   searchByTerm = (term) => {
+    term = term.toLowerCase();
     let emps = this.state.employees;
     let matches = emps.filter( emp => {
       return ( 
-        emp.name.last.indexOf(term) !== -1 ||
-        emp.name.first.indexOf(term) !== -1 ||
-        emp.email.indexOf(term) !== -1 ||
+        emp.name.last.toLowerCase().indexOf(term) !== -1 ||
+        emp.name.first.toLowerCase().indexOf(term) !== -1 ||
+        emp.email.toLowerCase().indexOf(term) !== -1 ||
         emp.phone.indexOf(term) !== -1 ||
-        emp.dept.indexOf(term) !== -1 ||
-        emp.hire.format("MMM D YYYY").indexOf(term) !== -1
+        emp.dept.toLowerCase().indexOf(term) !== -1 ||
+        emp.hire.format("MMM D YYYY").toLowerCase().indexOf(term) !== -1
       );
     });
     this.setState({
