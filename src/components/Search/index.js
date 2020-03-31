@@ -14,7 +14,7 @@ function Search(props) {
       return;
     }
     if (debouncedSearchTerm) {
-      props.searchByTerm(search);
+      props.setFilter(search);
     }
   }, [debouncedSearchTerm]);
 
@@ -32,7 +32,7 @@ function Search(props) {
       <SearchForm
         handleFormSubmit={handleFormSubmit}
         handleInputChange={handleInputChange}
-        results={search}
+        search={search}
       />
       <ClearFilterBtn clearFilter={props.clearFilter} filtered={props.filtered} />
     </div>

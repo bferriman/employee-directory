@@ -10,17 +10,20 @@ class App extends React.Component {
   state = {
     employees: [],
     sortedBy: "",
-    filtered: false
+    filter: ""
   };
 
   componentDidMount() {
     this.setState({ employees: employees });
   }
 
-  searchByTerm = (term) => {
-    term = term.toLowerCase();
-    let emps = this.state.employees;
-    let matches = emps.filter( emp => {
+  setFilter = (term) => {
+    this.setState({ filter: term });
+  }
+
+  filteredEmployees = () => {
+    let term = this.state.filter.toLowerCase();
+    let matches = this.state.employees.filter( emp => {
       return ( 
         emp.name.last.toLowerCase().indexOf(term) !== -1 ||
         emp.name.first.toLowerCase().indexOf(term) !== -1 ||
@@ -30,16 +33,12 @@ class App extends React.Component {
         emp.hire.format("MMM D YYYY").toLowerCase().indexOf(term) !== -1
       );
     });
-    this.setState({
-      employees: matches,
-      filtered: true
-    });
+    return matches;
   };
 
   clearFilter = () => {
     this.setState({ 
-      employees: employees,
-      filtered: false
+      filter: ""
     });
   }
 
@@ -120,11 +119,14 @@ class App extends React.Component {
   };
 
   render() {
+
+    const empsToRender = (!this.state.filter) ? this.state.employees : this.filteredEmployees();
+
     return (
       <div className="App">
-        <Search filtered={this.state.filtered} clearFilter={this.clearFilter} searchByTerm={this.searchByTerm} />
+        <Search filtered={(this.state.filter === "") ? false : true} clearFilter={this.clearFilter} setFilter={this.setFilter} />
         <Table
-          employees={this.state.employees}
+          employees={empsToRender}
           sortByName={this.sortByName}
           sortByDept={this.sortByDept}
           sortByHire={this.sortByHire}
